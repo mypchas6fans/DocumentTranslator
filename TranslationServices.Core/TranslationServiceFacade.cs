@@ -34,7 +34,7 @@ namespace TranslationAssistant.TranslationServices.Core
     {
         #region Static Fields
 
-        private const int MillisecondsTimeout = 100;
+        private const int MillisecondsTimeout = 500;
 
         public static event EventHandler RetryingEvent;
 
@@ -107,7 +107,7 @@ namespace TranslationAssistant.TranslationServices.Core
             using (HttpClient client = new HttpClient())
             using (HttpRequestMessage request = new HttpRequestMessage())
             {
-                client.Timeout = TimeSpan.FromSeconds(2);
+                client.Timeout = TimeSpan.FromSeconds(10);
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(uri);
                 string requestBody = JsonConvert.SerializeObject(body);
